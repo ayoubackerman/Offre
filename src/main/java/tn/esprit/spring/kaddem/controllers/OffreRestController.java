@@ -11,12 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/offre")
 public class OffreRestController {
-	IOffreService offreService;
+
+	private final IOffreService offreService;
 	// http://localhost:8089/Kaddem/departement/retrieve-all-departements
 	@GetMapping("/retrieve-all-offres")
 	public List<Offre> getoffres() {
-		List<Offre> listOffre = offreService.retrieveAllOffre();
-		return listOffre;
+		return offreService.retrieveAllOffre();
 	}
 	// http://localhost:8089/Kaddem/departement/retrieve-departement/8
 	@GetMapping("/retrieve-offre/{offre-id}")
@@ -27,8 +27,7 @@ public class OffreRestController {
 	// http://localhost:8089/Kaddem/departement/add-departement
 	@PostMapping("/add-offre")
 	public Offre addOffre(@RequestBody Offre d) {
-		Offre departement = offreService.addOffre(d);
-		return departement;
+		return offreService.addOffre(d);
 	}
 
 	// http://localhost:8089/Kaddem/departement/remove-departement/1
@@ -40,8 +39,7 @@ public class OffreRestController {
 	// http://localhost:8089/Kaddem/departement/update-departement
 	@PutMapping("/update-offre")
 	public Offre updateOffre(@RequestBody Offre e) {
-		Offre departement= offreService.updateOffre(e);
-		return departement;
+		return offreService.updateOffre(e);
 	}
 }
 
