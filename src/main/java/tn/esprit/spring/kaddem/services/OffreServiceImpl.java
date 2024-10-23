@@ -32,7 +32,14 @@ public class OffreServiceImpl implements IOffreService {
 	}
 
 	public Offre retrieveOffre (Integer idDepart){
-		return offreRepository.findById(idDepart).get();
+		Optional<Offre> o = offreRepository.findById(idDepart);
+		Offre offre = new Offre();
+
+		if (o.isPresent()){
+
+         offre = o.get();
+		}
+		return offre;
 	}
 	public  void deleteOffre(Integer idDepartement){
 		Optional<Offre> o = offreRepository.findById(idDepartement);
